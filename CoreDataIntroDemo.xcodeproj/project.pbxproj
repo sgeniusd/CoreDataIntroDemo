@@ -15,6 +15,12 @@
 		4C42E1C81AE0ADD9003F3C6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C42E1C71AE0ADD9003F3C6D /* Images.xcassets */; };
 		4C42E1CB1AE0ADD9003F3C6D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C42E1C91AE0ADD9003F3C6D /* LaunchScreen.xib */; };
 		4C42E1D71AE0ADD9003F3C6D /* CoreDataIntroDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1D61AE0ADD9003F3C6D /* CoreDataIntroDemoTests.m */; };
+		4C42E1E71AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1E21AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m */; };
+		4C42E1E81AE0DF4F003F3C6D /* PersistentStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1E41AE0DF4F003F3C6D /* PersistentStack.m */; };
+		4C42E1E91AE0DF4F003F3C6D /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1E61AE0DF4F003F3C6D /* Store.m */; };
+		4C42E1EC1AE0DF78003F3C6D /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1EB1AE0DF78003F3C6D /* ItemViewController.m */; };
+		4C42E1EF1AE0DF9E003F3C6D /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1EE1AE0DF9E003F3C6D /* Item.m */; };
+		4C42E1F11AE0E159003F3C6D /* itemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C42E1F01AE0E159003F3C6D /* itemViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,17 @@
 		4C42E1D01AE0ADD9003F3C6D /* CoreDataIntroDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataIntroDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C42E1D51AE0ADD9003F3C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C42E1D61AE0ADD9003F3C6D /* CoreDataIntroDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataIntroDemoTests.m; sourceTree = "<group>"; };
+		4C42E1E11AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedResultsControllerDataSource.h; sourceTree = "<group>"; };
+		4C42E1E21AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedResultsControllerDataSource.m; sourceTree = "<group>"; };
+		4C42E1E31AE0DF4F003F3C6D /* PersistentStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStack.h; sourceTree = "<group>"; };
+		4C42E1E41AE0DF4F003F3C6D /* PersistentStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStack.m; sourceTree = "<group>"; };
+		4C42E1E51AE0DF4F003F3C6D /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
+		4C42E1E61AE0DF4F003F3C6D /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		4C42E1EA1AE0DF78003F3C6D /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		4C42E1EB1AE0DF78003F3C6D /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		4C42E1ED1AE0DF9E003F3C6D /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		4C42E1EE1AE0DF9E003F3C6D /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		4C42E1F01AE0E159003F3C6D /* itemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = itemViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +100,14 @@
 		4C42E1B61AE0ADD9003F3C6D /* CoreDataIntroDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C42E1E01AE0DF3A003F3C6D /* CoreData */,
 				4C42E1BB1AE0ADD9003F3C6D /* AppDelegate.h */,
 				4C42E1BC1AE0ADD9003F3C6D /* AppDelegate.m */,
 				4C42E1C11AE0ADD9003F3C6D /* ViewController.h */,
 				4C42E1C21AE0ADD9003F3C6D /* ViewController.m */,
+				4C42E1EA1AE0DF78003F3C6D /* ItemViewController.h */,
+				4C42E1EB1AE0DF78003F3C6D /* ItemViewController.m */,
+				4C42E1F01AE0E159003F3C6D /* itemViewController.xib */,
 				4C42E1C41AE0ADD9003F3C6D /* Main.storyboard */,
 				4C42E1C71AE0ADD9003F3C6D /* Images.xcassets */,
 				4C42E1C91AE0ADD9003F3C6D /* LaunchScreen.xib */,
@@ -120,6 +141,21 @@
 				4C42E1D51AE0ADD9003F3C6D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C42E1E01AE0DF3A003F3C6D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4C42E1E11AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.h */,
+				4C42E1E21AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m */,
+				4C42E1E31AE0DF4F003F3C6D /* PersistentStack.h */,
+				4C42E1E41AE0DF4F003F3C6D /* PersistentStack.m */,
+				4C42E1E51AE0DF4F003F3C6D /* Store.h */,
+				4C42E1E61AE0DF4F003F3C6D /* Store.m */,
+				4C42E1ED1AE0DF9E003F3C6D /* Item.h */,
+				4C42E1EE1AE0DF9E003F3C6D /* Item.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C42E1C61AE0ADD9003F3C6D /* Main.storyboard in Resources */,
+				4C42E1F11AE0E159003F3C6D /* itemViewController.xib in Resources */,
 				4C42E1CB1AE0ADD9003F3C6D /* LaunchScreen.xib in Resources */,
 				4C42E1C81AE0ADD9003F3C6D /* Images.xcassets in Resources */,
 			);
@@ -222,8 +259,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C42E1EF1AE0DF9E003F3C6D /* Item.m in Sources */,
 				4C42E1BD1AE0ADD9003F3C6D /* AppDelegate.m in Sources */,
 				4C42E1C01AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld in Sources */,
+				4C42E1E71AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m in Sources */,
+				4C42E1E91AE0DF4F003F3C6D /* Store.m in Sources */,
+				4C42E1E81AE0DF4F003F3C6D /* PersistentStack.m in Sources */,
+				4C42E1EC1AE0DF78003F3C6D /* ItemViewController.m in Sources */,
 				4C42E1C31AE0ADD9003F3C6D /* ViewController.m in Sources */,
 				4C42E1BA1AE0ADD9003F3C6D /* main.m in Sources */,
 			);
