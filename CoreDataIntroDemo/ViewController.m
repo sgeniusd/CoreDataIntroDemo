@@ -12,6 +12,12 @@
 #import "YCStore.h"
 
 @interface ViewController ()
+{
+    __weak IBOutlet UITextField *_titleTextField;
+    __weak IBOutlet UITextField *_recordTextField;
+    
+    __weak IBOutlet UITextView *_outputTextView;
+}
 
 - (void)addSaveButtonItem;
 
@@ -71,6 +77,29 @@
 
 - (void)managedObjectContextDidSaveNotification:(NSNotification *)notification
 {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+#pragma mark - Button Callback
+
+/**
+ *  插入
+ */
+- (IBAction)insertClicked:(id)sender {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+/**
+ *  删除
+ */
+- (IBAction)deleteClicked:(id)sender {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+/**
+ *  查询
+ */
+- (IBAction)queryClicked:(id)sender {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
