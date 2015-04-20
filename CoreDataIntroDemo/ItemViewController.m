@@ -7,6 +7,8 @@
 #import "FetchedResultsControllerDataSource.h"
 #import "Store.h"
 #import "Item.h"
+#import "Entity1.h"
+#import "NSManagedObject+ActiveRecord.h"
 
 static NSString* const selectItemSegue = @"selectItem";
 

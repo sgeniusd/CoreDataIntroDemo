@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1DE8D91AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DE8D81AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m */; };
+		4C394EDA1AE4D4530098118A /* Entity111.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C394ED91AE4D4530098118A /* Entity111.m */; };
 		4C42E1BA1AE0ADD9003F3C6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1B91AE0ADD9003F3C6D /* main.m */; };
 		4C42E1BD1AE0ADD9003F3C6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1BC1AE0ADD9003F3C6D /* AppDelegate.m */; };
 		4C42E1C01AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1BE1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld */; };
@@ -21,6 +23,9 @@
 		4C42E1EC1AE0DF78003F3C6D /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1EB1AE0DF78003F3C6D /* ItemViewController.m */; };
 		4C42E1EF1AE0DF9E003F3C6D /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1EE1AE0DF9E003F3C6D /* Item.m */; };
 		4C42E1F11AE0E159003F3C6D /* itemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C42E1F01AE0E159003F3C6D /* itemViewController.xib */; };
+		4C496B451AE4B028008A68BD /* Entity1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C496B441AE4B028008A68BD /* Entity1.m */; };
+		4C496B481AE4B10B008A68BD /* YCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C496B471AE4B10B008A68BD /* YCStore.m */; };
+		4C496B4B1AE4CD68008A68BD /* YCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C1DE8D71AE4ED9D00790019 /* NSManagedObject+ActiveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+ActiveRecord.h"; sourceTree = "<group>"; };
+		4C1DE8D81AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+ActiveRecord.m"; sourceTree = "<group>"; };
+		4C394ED81AE4D4530098118A /* Entity111.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity111.h; sourceTree = "<group>"; };
+		4C394ED91AE4D4530098118A /* Entity111.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity111.m; sourceTree = "<group>"; };
 		4C42E1B41AE0ADD9003F3C6D /* CoreDataIntroDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataIntroDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C42E1B81AE0ADD9003F3C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C42E1B91AE0ADD9003F3C6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,6 +68,12 @@
 		4C42E1ED1AE0DF9E003F3C6D /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		4C42E1EE1AE0DF9E003F3C6D /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		4C42E1F01AE0E159003F3C6D /* itemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = itemViewController.xib; sourceTree = "<group>"; };
+		4C496B431AE4B028008A68BD /* Entity1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity1.h; sourceTree = "<group>"; };
+		4C496B441AE4B028008A68BD /* Entity1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity1.m; sourceTree = "<group>"; };
+		4C496B461AE4B10B008A68BD /* YCStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCStore.h; sourceTree = "<group>"; };
+		4C496B471AE4B10B008A68BD /* YCStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCStore.m; sourceTree = "<group>"; };
+		4C496B491AE4CD68008A68BD /* YCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCManagedObject.h; sourceTree = "<group>"; };
+		4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCManagedObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +115,7 @@
 		4C42E1B61AE0ADD9003F3C6D /* CoreDataIntroDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C496B411AE4AFB3008A68BD /* ycCoreData */,
 				4C42E1E01AE0DF3A003F3C6D /* CoreData */,
 				4C42E1BB1AE0ADD9003F3C6D /* AppDelegate.h */,
 				4C42E1BC1AE0ADD9003F3C6D /* AppDelegate.m */,
@@ -156,6 +172,31 @@
 				4C42E1EE1AE0DF9E003F3C6D /* Item.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		4C496B411AE4AFB3008A68BD /* ycCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4C1DE8D71AE4ED9D00790019 /* NSManagedObject+ActiveRecord.h */,
+				4C1DE8D81AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m */,
+				4C496B461AE4B10B008A68BD /* YCStore.h */,
+				4C496B471AE4B10B008A68BD /* YCStore.m */,
+				4C496B421AE4AFF9008A68BD /* CoreDataModels */,
+			);
+			path = ycCoreData;
+			sourceTree = "<group>";
+		};
+		4C496B421AE4AFF9008A68BD /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				4C496B491AE4CD68008A68BD /* YCManagedObject.h */,
+				4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */,
+				4C496B431AE4B028008A68BD /* Entity1.h */,
+				4C496B441AE4B028008A68BD /* Entity1.m */,
+				4C394ED81AE4D4530098118A /* Entity111.h */,
+				4C394ED91AE4D4530098118A /* Entity111.m */,
+			);
+			name = CoreDataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,13 +301,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C42E1EF1AE0DF9E003F3C6D /* Item.m in Sources */,
+				4C496B481AE4B10B008A68BD /* YCStore.m in Sources */,
+				4C1DE8D91AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m in Sources */,
 				4C42E1BD1AE0ADD9003F3C6D /* AppDelegate.m in Sources */,
+				4C496B451AE4B028008A68BD /* Entity1.m in Sources */,
 				4C42E1C01AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld in Sources */,
 				4C42E1E71AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m in Sources */,
 				4C42E1E91AE0DF4F003F3C6D /* Store.m in Sources */,
 				4C42E1E81AE0DF4F003F3C6D /* PersistentStack.m in Sources */,
+				4C496B4B1AE4CD68008A68BD /* YCManagedObject.m in Sources */,
 				4C42E1EC1AE0DF78003F3C6D /* ItemViewController.m in Sources */,
 				4C42E1C31AE0ADD9003F3C6D /* ViewController.m in Sources */,
+				4C394EDA1AE4D4530098118A /* Entity111.m in Sources */,
 				4C42E1BA1AE0ADD9003F3C6D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +508,7 @@
 				4C42E1DC1AE0ADD9003F3C6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C42E1DD1AE0ADD9003F3C6D /* Build configuration list for PBXNativeTarget "CoreDataIntroDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +517,7 @@
 				4C42E1DF1AE0ADD9003F3C6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
