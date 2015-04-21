@@ -7,11 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
 @interface Entity1 : NSManagedObject
 
-@property (nonatomic, retain) NSString * ycTitle;
-@property (nonatomic) NSInteger  ycOrder;
+@property (nonatomic, copy) NSString  *ycTitle;
+@property (nonatomic, assign) NSInteger ycOrder;
+@property (nonatomic, strong) NSDate    *ycCreateTime;
+@property (nonatomic, strong) UIColor   *ycColor;
+@property (nonatomic, strong) NSArray   *ycValues;
+@property (nonatomic, copy) NSString    *ycExtra;
+
+/**
+ *  自定义property（临时）
+ */
+@property (nonatomic, readonly) NSString *formateDate;  //格式化日期
 
 @end

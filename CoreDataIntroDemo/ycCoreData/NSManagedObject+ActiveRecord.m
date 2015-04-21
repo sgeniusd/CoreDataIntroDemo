@@ -38,58 +38,84 @@
 /**
  *  根据谓词查询
  */
-- (NSArray *)fetchByPredicate:(NSString *)predicate
++ (NSArray *)fetchByPredicate:(NSString *)predicate, ...
 {
-    return [self fetchByPredicate:predicate sortKey:nil ascending:NO error:nil];
+    NSFetchRequest* request = [self defaultFetchRequest];
+    if (predicate.length > 0) {
+        va_list args;
+        va_start(args, predicate);
+        request.predicate = [NSPredicate predicateWithFormat:predicate arguments:args];
+        va_end(args);
+    }
+    return [[YCStore sharedInstance] executeFetchRequest:request error:nil];;
 }
 
 /**
  *  查询所有数据并排序
  */
-- (NSArray *)fetchBySortKey:(NSString*)sortKey
++ (NSArray *)fetchBySortKey:(NSString*)sortKey
                   ascending:(BOOL)ascending
 {
-    return [self fetchByPredicate:nil sortKey:sortKey ascending:ascending error:nil];
+    return [self fetchBySortKey:sortKey ascending:ascending predicate:nil];
 }
 
 /**
  *  根据谓词查询并排序
  */
-- (NSArray *)fetchByPredicate:(NSString *)predicate
-                      sortKey:(NSString*)sortKey
++ (NSArray *)fetchBySortKey:(NSString*)sortKey
                     ascending:(BOOL)ascending
-                        error:(NSError **)error
+                    predicate:(NSString *)predicate,...
 {
-    NSFetchRequest* request = [NSManagedObject defaultFetchRequest];
+    NSFetchRequest* request = [self defaultFetchRequest];
     if (predicate.length > 0) {
         request.predicate = [NSPredicate predicateWithFormat:predicate];
     }
     if (sortKey.length > 0) {
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending]];
     }
-    return [[YCStore sharedInstance] executeFetchRequest:request error:error];
+    return [[YCStore sharedInstance] executeFetchRequest:request error:nil];
+}
+
+/**
+ *  根据谓词查询并排序(内部封装调用)
+ */
++ (NSArray *)fetchBySortKey:(NSString*)sortKey
+                  ascending:(BOOL)ascending
+                  predicate:(NSString *)predicate
+                  arguments:(va_list)argList
+{
+    NSFetchRequest* request = [self defaultFetchRequest];
+    if (predicate.length > 0) {
+        request.predicate = [NSPredicate predicateWithFormat:predicate arguments:argList];
+    }
+    if (sortKey.length > 0) {
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending]];
+    }
+    return [[YCStore sharedInstance] executeFetchRequest:request error:nil];
 }
 
 #pragma mark - 删除
 
-- (void) deleteObjectByID:(NSManagedObjectID*)objectID {
++ (void) deleteObjectByID:(NSManagedObjectID*)objectID {
     [[YCStore sharedInstance] deleteObjectByID:objectID];
-}
-
-
-- (void) deleteSelf {
-    [self deleteObjectByID:self.objectID];
 }
 
 /**
  *  根据谓词删除
  */
-- (void)deleteObjectByPredicate:(NSString *)predicate
++ (void)deleteObjectByPredicate:(NSString *)predicate,...
 {
-    NSArray *toDeleteObjects = [self fetchByPredicate:predicate];
+    va_list args;
+    va_start(args, predicate);
+    NSArray *toDeleteObjects = [self fetchBySortKey:nil ascending:NO predicate:predicate arguments:args];
+    va_end(args);
     for (NSManagedObject *toDeleteObject in toDeleteObjects) {
         [toDeleteObject deleteSelf];
     }
+}
+
+- (void) deleteSelf {
+    [[YCStore sharedInstance] deleteObjectByID:self.objectID];
 }
 
 @end

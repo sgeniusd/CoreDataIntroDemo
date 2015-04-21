@@ -28,35 +28,42 @@
 /**
  *  根据谓词查询
  */
-- (NSArray *)fetchByPredicate:(NSString *)predicate;
++ (NSArray *)fetchByPredicate:(NSString *)predicate,...;
 
 /**
  *  查询所有数据并排序
  */
-- (NSArray *)fetchBySortKey:(NSString*)sortKey
++ (NSArray *)fetchBySortKey:(NSString*)sortKey
                   ascending:(BOOL)ascending;
 
 /**
- *  根据谓词查询并排序
+ *  根据谓词查询并排序(可变参数)
  */
-- (NSArray *)fetchByPredicate:(NSString *)predicate
-                      sortKey:(NSString*)sortKey
-                    ascending:(BOOL)ascending
-                        error:(NSError **)error;
++ (NSArray *)fetchBySortKey:(NSString*)sortKey
+                  ascending:(BOOL)ascending
+                  predicate:(NSString *)predicate,...;
+
+/**
+ *  根据谓词查询并排序(内部封装用)
+ */
++ (NSArray *)fetchBySortKey:(NSString*)sortKey
+                  ascending:(BOOL)ascending
+                  predicate:(NSString *)predicate
+                  arguments:(va_list)argList;
 
 /**
  *  根据ID删除
  */
-- (void) deleteObjectByID:(NSManagedObjectID*)objectID;
++ (void) deleteObjectByID:(NSManagedObjectID*)objectID;
+
+/**
+ *  根据谓词删除
+ */
++ (void)deleteObjectByPredicate:(NSString *)predicate,...;
 
 /**
  *  删除当前对象
  */
 - (void) deleteSelf;
-
-/**
- *  根据谓词删除
- */
-- (void)deleteObjectByPredicate:(NSString *)predicate;
 
 @end

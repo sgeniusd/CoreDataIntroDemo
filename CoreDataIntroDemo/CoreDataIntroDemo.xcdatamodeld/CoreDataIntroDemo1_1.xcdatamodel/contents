@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Car" syncable="YES">
+        <attribute name="carNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Entity1" representedClassName="Entity1" syncable="YES">
         <attribute name="ycColor" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="ycCreateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="ycOrder" optional="YES" attributeType="Integer 64" minValueString="1" maxValueString="1000" defaultValueString="10" syncable="YES"/>
+        <attribute name="ycOrder" attributeType="Integer 64" minValueString="1" maxValueString="1000" defaultValueString="10" indexed="YES" syncable="YES"/>
         <attribute name="ycTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ycTrasientValue" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="ycValues" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity1" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Entity1" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Car" positionX="-63" positionY="27" width="128" height="75"/>
     </elements>
 </model>

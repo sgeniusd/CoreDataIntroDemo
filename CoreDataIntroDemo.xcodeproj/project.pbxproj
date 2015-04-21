@@ -74,6 +74,7 @@
 		4C496B471AE4B10B008A68BD /* YCStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCStore.m; sourceTree = "<group>"; };
 		4C496B491AE4CD68008A68BD /* YCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCManagedObject.h; sourceTree = "<group>"; };
 		4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCManagedObject.m; sourceTree = "<group>"; };
+		4CFFA0BC1AE63AEF0000B8C6 /* CoreDataIntroDemo1_1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataIntroDemo1_1.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,6 +526,7 @@
 		4C42E1BE1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4CFFA0BC1AE63AEF0000B8C6 /* CoreDataIntroDemo1_1.xcdatamodel */,
 				4C42E1BF1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodel */,
 			);
 			currentVersion = 4C42E1BF1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodel */;
