@@ -28,4 +28,9 @@
 
 - (NSFetchedResultsController *)childrenFetchedResultsController;
 
+/**
+ *  无parent的Entity1
+ */
++ (Entity1 *)rootItem;
+
 @end

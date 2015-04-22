@@ -51,7 +51,6 @@ static NSString* const selectItemSegue = @"selectItem";
     self.fetchedResultsControllerDataSource.paused = YES;
 }
 
-
 - (void)setupFetchedResultsController
 {
     self.fetchedResultsControllerDataSource = [[FetchedResultsControllerDataSource alloc] initWithTableView:self.tableView];

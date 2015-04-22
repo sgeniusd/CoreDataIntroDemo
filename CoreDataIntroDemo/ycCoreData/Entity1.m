@@ -104,4 +104,19 @@ static NSDateFormatter *_dateFormatter = nil;
     return fetchedResultsController;
 }
 
+/**
+ *  无parent的Entity1
+ */
++ (Entity1 *)rootItem
+{
+    Entity1 *aItem = nil;
+    NSArray *items = [Entity1 fetchByPredicate:@"parent = %@", nil];
+    if ([items count] > 0) {
+        aItem = items[0];
+    } else {
+        aItem = [Entity1 insertNewObject];
+    }
+    return aItem;
+}
+
 @end

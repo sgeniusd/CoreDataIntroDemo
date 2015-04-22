@@ -257,6 +257,7 @@
 
 - (IBAction)enterFetchedResultsController:(id)sender {
     FetchedItemController *itemController = [[FetchedItemController alloc]init];
+    itemController.parent = [Entity1 rootItem];
     [self.navigationController pushViewController:itemController animated:YES];
 }
 
