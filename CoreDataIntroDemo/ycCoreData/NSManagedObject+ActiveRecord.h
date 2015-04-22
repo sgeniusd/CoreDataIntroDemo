@@ -11,11 +11,6 @@
 @interface NSManagedObject (ActiveRecord)
 
 /**
- *  插入一条新的NSManagedObject对象
- */
-+ (instancetype)insertNewObject;
-
-/**
  *  NSManagedObject对应Entity的名称，默认与类名相同，可以在子类中重写
  */
 + (NSString *)entityName;
@@ -24,6 +19,11 @@
  *  默认的FetchRequest
  */
 + (NSFetchRequest *)defaultFetchRequest;
+
+/**
+ *  插入一条新的NSManagedObject对象
+ */
++ (instancetype)insertNewObject;
 
 /**
  *  根据谓词查询

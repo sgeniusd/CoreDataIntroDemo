@@ -38,6 +38,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.currentLog = @"";
     
+    /**
+     *  OSX上默认不为nil，iOS上需要重新初始化
+     */
+    [YCStore sharedInstance].managedObjectContext.undoManager = [[NSUndoManager alloc]init];
+    [[[YCStore sharedInstance].managedObjectContext undoManager]registerUndoWithTarget:self selector:@selector(undoCompleted:) object:nil];
+    [[[YCStore sharedInstance].managedObjectContext undoManager]setActionName:@"ManagedObjectContextUndo"];
+    
     //保存按钮
     [self addSaveButtonItem];
     
@@ -148,32 +155,46 @@
     [YCStore saveContext];
 }
 
+- (void)undoCompleted:(id)sender
+{
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, [sender description]);
+}
+
 /**
  *  插入
  */
 - (IBAction)insertClicked:(id)sender {
+    
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    Entity1 *entity = [Entity1 insertNewObject];
-    entity.ycTitle = _titleTextField.text;
-    if (entity > 0) {
-        entity.ycOrder = [_orderTextField.text integerValue];
-    }
-    entity.ycCreateTime = [NSDate date];
-    entity.ycColor = [UIColor blueColor];
-    entity.ycValues = @[@"10", @"J", @"Q", @"K", @"A"];
-    
-//    Car *car = [[Car alloc]init];
-//    car.name = @"toyota";
-//    car.price = 200000;
+//    for (int i = 0; i < 100000; i ++) {
+        Entity1 *entity = [Entity1 insertNewObject];
+        entity.ycTitle = _titleTextField.text;
+        if (entity > 0) {
+            entity.ycOrder = [_orderTextField.text integerValue];
+        }
+        entity.ycCreateTime = [NSDate date];
+        entity.ycColor = [UIColor blueColor];
+        entity.ycValues = @[@"10", @"J", @"Q", @"K", @"A"];
+        
+//        [[YCStore sharedInstance].managedObjectContext refreshObject:entity mergeChanges:YES];
+//    }
+//    NSString *logInfo = [[NSString alloc]initWithFormat:@"插入：order = %ld title = %@ createTime = %@ values= %@\n", entity.ycOrder, entity.ycTitle, entity.formateDate, entity.ycValues];
+//    [self addLogInfo:logInfo];
 }
 
 /**
  *  删除
  */
 - (IBAction)deleteClicked:(id)sender {
+    if (_orderTextField.text.length == 0) {
+        //delete today
+        [Entity1 deleteObjectByPredicate:@"ycColor==%@", [UIColor blueColor]];
+    } else {
+        [Entity1 deleteObjectByPredicate:@"ycOrder==%@", _orderTextField.text];
+    }
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    [Entity1 deleteObjectByPredicate:@"ycTitle=%@", _titleTextField.text];
+    
 }
 
 /**
@@ -182,13 +203,17 @@
 - (IBAction)queryClicked:(id)sender {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    NSArray *result = [Entity1 fetchByPredicate:@"ycOrder==%ld", [_orderTextField.text integerValue]];
+    NSArray *result = nil;
+    if (_orderTextField.text.length == 0) {
+        result = [Entity1 fetchBySortKey:@"ycOrder" ascending:NO];
+    } else {
+        result = [Entity1 fetchByPredicate:@"ycOrder==%ld", [_orderTextField.text integerValue]];
+    }
     if ([result count] > 0) {
         Entity1 *entity = result[0];
-        NSLog(@"one### title = %@ fault = %d", entity.ycTitle, entity.fault);
-        _orderTextField.text = [@(entity.ycOrder)stringValue];
+        _titleTextField.text = entity.ycTitle;
         if (entity.ycColor) {
-            _orderTextField.textColor = entity.ycColor;
+            _titleTextField.textColor = entity.ycColor;
         }
     } else {
         [self addLogInfo:@"查询无结果\n"];
@@ -197,7 +222,7 @@
     for (Entity1 *entity in result) {
         NSLog(@"two### %p # title = %@ fault = %d", entity, entity.ycTitle, entity.fault);
         
-        NSString *logInfo = [[NSString alloc]initWithFormat:@"order = %ld title = %@ createTime = %@ values= %@\n", entity.ycOrder, entity.ycTitle, entity.formateDate, entity.ycValues];
+        NSString *logInfo = [[NSString alloc]initWithFormat:@"查询结果：order = %ld title = %@ createTime = %@ values= %@\n", entity.ycOrder, entity.ycTitle, entity.formateDate, entity.ycValues];
         [self addLogInfo:logInfo];
     }
     
@@ -205,7 +230,8 @@
 //        NSLog(@"second %p # title = %@ fault = %d", entity, entity.ycTitle, entity.fault);
 //    }
     
-    [self queryAgain];
+    //验证缓存机制
+//    [self queryAgain];
 }
 
 - (void)queryAgain
@@ -213,8 +239,30 @@
     NSArray *result = [Entity1 fetchByPredicate:@"ycOrder==%ld", [_orderTextField.text integerValue]];
     if ([result count] > 0) {
         Entity1 *entity = result[0];
-        NSLog(@"again### title = %@ fault = %d", entity.ycTitle, entity.fault);
+        NSLog(@"again### %p title = %@ fault = %d", entity, entity.ycTitle, entity.fault);
+        NSLog(@"How old are you?");
     }
 }
+
+/**
+ *  undo上一次
+ */
+- (IBAction)undoPrevious:(id)sender {
+    [[YCStore sharedInstance].managedObjectContext undo];
+//    [[[YCStore sharedInstance].managedObjectContext undoManager]undo]; //等价
+}
+
+/**
+ *  undo全部(包括单次undo操作)
+ */
+- (IBAction)undoAll:(id)sender {
+    [[YCStore sharedInstance].managedObjectContext rollback];
+}
+
+- (IBAction)clearLog:(id)sender {
+    self.currentLog = @"";
+    _outputTextView.text = @"";
+}
+
 
 @end

@@ -11,6 +11,14 @@
 
 @implementation NSManagedObject (ActiveRecord)
 
+/**
+ *  NSManagedObject对应Entity的名称，默认与类名相同，可以在子类中重写
+ */
++ (NSString *)entityName
+{
+    return NSStringFromClass([self class]);
+}
+
 #pragma mark - 插入
 /**
  *  插入一条新的NSManagedObject对象
@@ -18,14 +26,6 @@
 + (instancetype)insertNewObject
 {
     return (id)[[YCStore sharedInstance]insertNewObjectForEntityName:[self entityName]];
-}
-
-/**
- *  NSManagedObject对应Entity的名称，默认与类名相同，可以在子类中重写
- */
-+ (NSString *)entityName
-{
-    return NSStringFromClass([self class]);
 }
 
 #pragma mark - 查询
@@ -47,7 +47,7 @@
         request.predicate = [NSPredicate predicateWithFormat:predicate arguments:args];
         va_end(args);
     }
-    return [[YCStore sharedInstance] executeFetchRequest:request error:nil];;
+    return [[YCStore sharedInstance] executeFetchRequest:request error:nil];
 }
 
 /**
@@ -105,10 +105,20 @@
  */
 + (void)deleteObjectByPredicate:(NSString *)predicate,...
 {
-    va_list args;
-    va_start(args, predicate);
-    NSArray *toDeleteObjects = [self fetchBySortKey:nil ascending:NO predicate:predicate arguments:args];
-    va_end(args);
+    //TODO:可变参数的传递，如何搞
+//    va_list args;
+//    va_start(args, predicate);
+//    NSArray *toDeleteObjects = [self fetchBySortKey:nil ascending:NO predicate:predicate arguments:args];
+//    va_end(args);
+    
+    NSFetchRequest* request = [self defaultFetchRequest];
+    if (predicate.length > 0) {
+        va_list args;
+        va_start(args, predicate);
+        request.predicate = [NSPredicate predicateWithFormat:predicate arguments:args];
+        va_end(args);
+    }
+    NSArray *toDeleteObjects = [[YCStore sharedInstance] executeFetchRequest:request error:nil];
     for (NSManagedObject *toDeleteObject in toDeleteObjects) {
         [toDeleteObject deleteSelf];
     }

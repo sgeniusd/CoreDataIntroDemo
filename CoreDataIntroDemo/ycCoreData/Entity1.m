@@ -10,6 +10,12 @@
 
 static NSDateFormatter *_dateFormatter = nil;
 
+@interface Entity1 ()
+
+@property (nonatomic, assign) BOOL valueIsValid;
+
+@end
+
 @implementation Entity1
 
 @dynamic ycTitle;
@@ -20,6 +26,22 @@ static NSDateFormatter *_dateFormatter = nil;
 @dynamic ycExtra;
 
 @synthesize formateDate = _formateDate;
+@synthesize valueIsValid = _valueIsValid;
+
+- (void)awakeFromFetch
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)awakeFromInsert
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)awakeFromSnapshotEvents:(NSSnapshotEventType)flags
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
 
 - (void)willSave
 {
@@ -41,14 +63,15 @@ static NSDateFormatter *_dateFormatter = nil;
 }
 
 - (void)didTurnIntoFault
-{    
+{
+    self.valueIsValid = NO;
 }
 
-- (BOOL)validateValue:(id *)value forKey:(NSString *)key error:(NSError **)error
-{
-    
-    return YES;
-}
+//- (BOOL)validateValue:(id *)value forKey:(NSString *)key error:(NSError **)error
+//{
+//    
+//    return YES;
+//}
 
 //- (BOOL)validateForInsert:(NSError *__autoreleasing *)error
 //{
@@ -59,16 +82,17 @@ static NSDateFormatter *_dateFormatter = nil;
 
 - (NSString *)formateDate
 {
-    NSString *fDate = @"";
-    if (self.ycCreateTime) {
+    if (!self.valueIsValid && self.ycCreateTime) {
+        self.valueIsValid = YES;
+        
         if (_dateFormatter == nil) {
             _dateFormatter = [[NSDateFormatter alloc]init];
         }
         [_dateFormatter setDateFormat:@"yyyy年MM月dd日"];
         [_dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
-        fDate = [_dateFormatter stringFromDate:self.ycCreateTime];
+        _formateDate = [_dateFormatter stringFromDate:self.ycCreateTime];
     }
-    return fDate;
+    return _formateDate;
 }
 
 @end

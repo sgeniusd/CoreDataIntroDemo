@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Child" syncable="YES">
+        <attribute name="chidID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entity1relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity1" inverseName="childrelationship" inverseEntity="Entity1" syncable="YES"/>
+    </entity>
     <entity name="Entity1" representedClassName="Entity1" syncable="YES">
-        <attribute name="ycColor" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="ycColor" attributeType="Transformable" syncable="YES"/>
         <attribute name="ycCreateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ycOrder" optional="YES" attributeType="Integer 64" minValueString="1" maxValueString="1000" defaultValueString="10" syncable="YES"/>
         <attribute name="ycTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ycValues" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="childrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="entity1relationship" inverseEntity="Child" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity1" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Entity1" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Child" positionX="-63" positionY="18" width="128" height="90"/>
     </elements>
 </model>
