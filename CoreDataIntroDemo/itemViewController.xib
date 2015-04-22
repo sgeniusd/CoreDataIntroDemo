@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemViewController">
             <connections>
-                <outlet property="tableView" destination="Phl-xy-XMg" id="GZj-dW-Iii"/>
-                <outlet property="view" destination="iN0-l3-epB" id="cZw-pI-fX9"/>
+                <outlet property="tableView" destination="Phl-xy-XMg" id="Hju-oR-HdG"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JWY-Sn-H1e"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,7 +23,7 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Phl-xy-XMg" secondAttribute="bottom" id="Ylh-wD-jT2"/>
                 <constraint firstItem="Phl-xy-XMg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hPP-UH-tK2"/>

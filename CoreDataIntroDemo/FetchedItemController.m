@@ -1,9 +1,12 @@
 //
-// Created by Chris Eidhof
+//  FetchedItemController.m
+//  CoreDataIntroDemo
+//
+//  Created by bita on 15/4/22.
+//  Copyright (c) 2015年 bita. All rights reserved.
 //
 
-
-#import "ItemViewController.h"
+#import "FetchedItemController.h"
 #import "FetchedResultsControllerDataSource.h"
 #import "Store.h"
 #import "Item.h"
@@ -12,7 +15,7 @@
 
 static NSString* const selectItemSegue = @"selectItem";
 
-@interface ItemViewController () <FetchedResultsControllerDataSourceDelegate, UITextFieldDelegate>
+@interface FetchedItemController () <FetchedResultsControllerDataSourceDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) FetchedResultsControllerDataSource* fetchedResultsControllerDataSource;
 @property (nonatomic, strong) UITextField* titleField;
@@ -20,14 +23,14 @@ static NSString* const selectItemSegue = @"selectItem";
 
 @end
 
-@implementation ItemViewController
+@implementation FetchedItemController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor whiteColor];
+    //    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"FetchedResultsController";
-
+    
     [self setupFetchedResultsController];
     [self setupNewItemField];
 }
@@ -35,7 +38,7 @@ static NSString* const selectItemSegue = @"selectItem";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     if ([self.tableView numberOfRowsInSection:0] > 0) {
         [self hideNewItemField];
     }
@@ -70,16 +73,16 @@ static NSString* const selectItemSegue = @"selectItem";
 - (void)configureCell:(id)theCell withObject:(id)object
 {
     UITableViewCell* cell = theCell;
-    Item* item = object;
-    cell.textLabel.text = item.title;
+    Entity1* item = object;
+    cell.textLabel.text = item.ycTitle;
 }
 
 - (void)deleteObject:(id)object
 {
-    Item* item = object;
-    NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"Delete \"%@\"", @"Delete undo action name"), item.title];
+    Entity1* item = object;
+    NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"Delete \"%@\"", @"Delete undo action name"), item.ycTitle];
     [self.undoManager setActionName:actionName];
-    [item.managedObjectContext deleteObject:item];
+    [item deleteSelf];
 }
 
 #pragma mark Segues
@@ -92,9 +95,9 @@ static NSString* const selectItemSegue = @"selectItem";
     }
 }
 
-- (void)presentSubItemViewController:(ItemViewController*)subItemViewController
+- (void)presentSubItemViewController:(FetchedItemController*)subItemViewController
 {
-    Item* item = [self.fetchedResultsControllerDataSource selectedItem];
+    Entity1* item = [self.fetchedResultsControllerDataSource selectedItem];
     subItemViewController.parent = item;
 }
 
@@ -104,7 +107,11 @@ static NSString* const selectItemSegue = @"selectItem";
     NSString* title = textField.text;
     NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"add item \"%@\"", @"Undo action name of add item"), title];
     [self.undoManager setActionName:actionName];
-    [Item insertItemWithTitle:title parent:self.parent inManagedObjectContext:self.managedObjectContext];
+    
+    Entity1 *entity = [Entity1 insertNewObject];
+    entity.ycTitle = title;
+    entity.parent = self.parent;
+//    [Item insertItemWithTitle:title parent:self.parent inManagedObjectContext:self.managedObjectContext];
     textField.text = @"";
     [textField resignFirstResponder];
     [self hideNewItemField];
@@ -156,10 +163,10 @@ static NSString* const selectItemSegue = @"selectItem";
     self.tableView.contentInset = insets;
 }
 
-- (void)setParent:(Item*)parent
+- (void)setParent:(Entity1*)parent
 {
     _parent = parent;
-    self.navigationItem.title = parent.title;
+    self.navigationItem.title = parent.ycTitle;
 }
 
 #pragma mark Undo

@@ -68,7 +68,10 @@
 {
     NSFetchRequest* request = [self defaultFetchRequest];
     if (predicate.length > 0) {
-        request.predicate = [NSPredicate predicateWithFormat:predicate];
+        va_list args;
+        va_start(args, predicate);
+        request.predicate = [NSPredicate predicateWithFormat:predicate arguments:args];
+        va_end(args);
     }
     if (sortKey.length > 0) {
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending]];
@@ -92,6 +95,23 @@
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending]];
     }
     return [[YCStore sharedInstance] executeFetchRequest:request error:nil];
+}
+
++ (NSFetchedResultsController *)fetchedResultsControllerBySortKey:(NSString*)sortKey
+                                                        ascending:(BOOL)ascending
+                                                        predicate:(NSString *)predicate,...
+{
+    NSFetchRequest* request = [self defaultFetchRequest];
+    if (predicate.length > 0) {
+        va_list args;
+        va_start(args, predicate);
+        request.predicate = [NSPredicate predicateWithFormat:predicate arguments:args];
+        va_end(args);
+    }
+    if (sortKey.length > 0) {
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey ascending:ascending]];
+    }
+    return [[YCStore sharedInstance] fetchedResultControllerForRequest:request error:nil];
 }
 
 #pragma mark - 删除

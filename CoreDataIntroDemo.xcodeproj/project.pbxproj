@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C1DE8D91AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1DE8D81AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m */; };
+		4C4026CE1AE7905800DB6130 /* Entity1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4026CD1AE7905800DB6130 /* Entity1.m */; };
+		4C4026DA1AE796C800DB6130 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4026D91AE796C800DB6130 /* Child.m */; };
 		4C42E1BA1AE0ADD9003F3C6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1B91AE0ADD9003F3C6D /* main.m */; };
 		4C42E1BD1AE0ADD9003F3C6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1BC1AE0ADD9003F3C6D /* AppDelegate.m */; };
 		4C42E1C01AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1BE1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld */; };
@@ -22,9 +24,10 @@
 		4C42E1EC1AE0DF78003F3C6D /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1EB1AE0DF78003F3C6D /* ItemViewController.m */; };
 		4C42E1EF1AE0DF9E003F3C6D /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C42E1EE1AE0DF9E003F3C6D /* Item.m */; };
 		4C42E1F11AE0E159003F3C6D /* itemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C42E1F01AE0E159003F3C6D /* itemViewController.xib */; };
-		4C496B451AE4B028008A68BD /* Entity1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C496B441AE4B028008A68BD /* Entity1.m */; };
 		4C496B481AE4B10B008A68BD /* YCStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C496B471AE4B10B008A68BD /* YCStore.m */; };
 		4C496B4B1AE4CD68008A68BD /* YCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */; };
+		4C8824541AE7A7F900095318 /* FetchedItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8824521AE7A7F900095318 /* FetchedItemController.m */; };
+		4C8824551AE7A7F900095318 /* FetchedItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8824531AE7A7F900095318 /* FetchedItemController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,10 @@
 /* Begin PBXFileReference section */
 		4C1DE8D71AE4ED9D00790019 /* NSManagedObject+ActiveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+ActiveRecord.h"; sourceTree = "<group>"; };
 		4C1DE8D81AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+ActiveRecord.m"; sourceTree = "<group>"; };
+		4C4026CC1AE7905800DB6130 /* Entity1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity1.h; sourceTree = "<group>"; };
+		4C4026CD1AE7905800DB6130 /* Entity1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity1.m; sourceTree = "<group>"; };
+		4C4026D81AE796C800DB6130 /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
+		4C4026D91AE796C800DB6130 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
 		4C42E1B41AE0ADD9003F3C6D /* CoreDataIntroDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataIntroDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C42E1B81AE0ADD9003F3C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C42E1B91AE0ADD9003F3C6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,12 +72,13 @@
 		4C42E1ED1AE0DF9E003F3C6D /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		4C42E1EE1AE0DF9E003F3C6D /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		4C42E1F01AE0E159003F3C6D /* itemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = itemViewController.xib; sourceTree = "<group>"; };
-		4C496B431AE4B028008A68BD /* Entity1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity1.h; sourceTree = "<group>"; };
-		4C496B441AE4B028008A68BD /* Entity1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity1.m; sourceTree = "<group>"; };
 		4C496B461AE4B10B008A68BD /* YCStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCStore.h; sourceTree = "<group>"; };
 		4C496B471AE4B10B008A68BD /* YCStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCStore.m; sourceTree = "<group>"; };
 		4C496B491AE4CD68008A68BD /* YCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCManagedObject.h; sourceTree = "<group>"; };
 		4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCManagedObject.m; sourceTree = "<group>"; };
+		4C8824511AE7A7F900095318 /* FetchedItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedItemController.h; sourceTree = "<group>"; };
+		4C8824521AE7A7F900095318 /* FetchedItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedItemController.m; sourceTree = "<group>"; };
+		4C8824531AE7A7F900095318 /* FetchedItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FetchedItemController.xib; sourceTree = "<group>"; };
 		4CFFA0BC1AE63AEF0000B8C6 /* CoreDataIntroDemo1_1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataIntroDemo1_1.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +127,9 @@
 				4C42E1BC1AE0ADD9003F3C6D /* AppDelegate.m */,
 				4C42E1C11AE0ADD9003F3C6D /* ViewController.h */,
 				4C42E1C21AE0ADD9003F3C6D /* ViewController.m */,
+				4C8824511AE7A7F900095318 /* FetchedItemController.h */,
+				4C8824521AE7A7F900095318 /* FetchedItemController.m */,
+				4C8824531AE7A7F900095318 /* FetchedItemController.xib */,
 				4C42E1EA1AE0DF78003F3C6D /* ItemViewController.h */,
 				4C42E1EB1AE0DF78003F3C6D /* ItemViewController.m */,
 				4C42E1F01AE0E159003F3C6D /* itemViewController.xib */,
@@ -189,8 +200,10 @@
 			children = (
 				4C496B491AE4CD68008A68BD /* YCManagedObject.h */,
 				4C496B4A1AE4CD68008A68BD /* YCManagedObject.m */,
-				4C496B431AE4B028008A68BD /* Entity1.h */,
-				4C496B441AE4B028008A68BD /* Entity1.m */,
+				4C4026CC1AE7905800DB6130 /* Entity1.h */,
+				4C4026CD1AE7905800DB6130 /* Entity1.m */,
+				4C4026D81AE796C800DB6130 /* Child.h */,
+				4C4026D91AE796C800DB6130 /* Child.m */,
 			);
 			name = CoreDataModels;
 			sourceTree = "<group>";
@@ -278,6 +291,7 @@
 				4C42E1C61AE0ADD9003F3C6D /* Main.storyboard in Resources */,
 				4C42E1F11AE0E159003F3C6D /* itemViewController.xib in Resources */,
 				4C42E1CB1AE0ADD9003F3C6D /* LaunchScreen.xib in Resources */,
+				4C8824551AE7A7F900095318 /* FetchedItemController.xib in Resources */,
 				4C42E1C81AE0ADD9003F3C6D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,11 +311,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C42E1EF1AE0DF9E003F3C6D /* Item.m in Sources */,
+				4C8824541AE7A7F900095318 /* FetchedItemController.m in Sources */,
 				4C496B481AE4B10B008A68BD /* YCStore.m in Sources */,
 				4C1DE8D91AE4ED9D00790019 /* NSManagedObject+ActiveRecord.m in Sources */,
+				4C4026CE1AE7905800DB6130 /* Entity1.m in Sources */,
 				4C42E1BD1AE0ADD9003F3C6D /* AppDelegate.m in Sources */,
-				4C496B451AE4B028008A68BD /* Entity1.m in Sources */,
 				4C42E1C01AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld in Sources */,
+				4C4026DA1AE796C800DB6130 /* Child.m in Sources */,
 				4C42E1E71AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m in Sources */,
 				4C42E1E91AE0DF4F003F3C6D /* Store.m in Sources */,
 				4C42E1E81AE0DF4F003F3C6D /* PersistentStack.m in Sources */,

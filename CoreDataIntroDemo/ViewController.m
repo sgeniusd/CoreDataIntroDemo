@@ -10,6 +10,7 @@
 #import "Entity1.h"
 #import "NSManagedObject+ActiveRecord.h"
 #import "YCStore.h"
+#import "FetchedItemController.h"
 
 @interface ViewController ()
 {
@@ -26,8 +27,6 @@
 - (void)addGlobalNotificationObserver;
 
 - (void)addLogInfo:(NSString *)logInfo;
-
-- (NSString *)fetchPredicate;
 
 @end
 
@@ -84,15 +83,6 @@
         self.currentLog = [logInfo stringByAppendingString:self.currentLog];
         _outputTextView.text = self.currentLog;
     }
-}
-
-- (NSString *)fetchPredicate
-{
-    NSString *fPredicate = @"";
-    if (_titleTextField.text.length > 0) {
-        fPredicate = [[NSString alloc]initWithFormat:@"title=%@", _titleTextField.text];
-    }
-    return fPredicate;
 }
 
 #pragma mark - Notification Callback
@@ -189,12 +179,11 @@
 - (IBAction)deleteClicked:(id)sender {
     if (_orderTextField.text.length == 0) {
         //delete today
-        [Entity1 deleteObjectByPredicate:@"ycColor==%@", [UIColor blueColor]];
+        [Entity1 deleteObjectByPredicate:@"ycColor = %@", [UIColor blueColor]];
     } else {
-        [Entity1 deleteObjectByPredicate:@"ycOrder==%@", _orderTextField.text];
+        [Entity1 deleteObjectByPredicate:@"ycOrder = %ld", [_orderTextField.text integerValue]];
     }
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    
 }
 
 /**
@@ -224,6 +213,8 @@
         
         NSString *logInfo = [[NSString alloc]initWithFormat:@"查询结果：order = %ld title = %@ createTime = %@ values= %@\n", entity.ycOrder, entity.ycTitle, entity.formateDate, entity.ycValues];
         [self addLogInfo:logInfo];
+        
+//        [[YCStore sharedInstance].managedObjectContext refreshObject:entity mergeChanges:NO];
     }
     
 //    for (Entity1 *entity in result) {
@@ -262,6 +253,11 @@
 - (IBAction)clearLog:(id)sender {
     self.currentLog = @"";
     _outputTextView.text = @"";
+}
+
+- (IBAction)enterFetchedResultsController:(id)sender {
+    FetchedItemController *itemController = [[FetchedItemController alloc]init];
+    [self.navigationController pushViewController:itemController animated:YES];
 }
 
 

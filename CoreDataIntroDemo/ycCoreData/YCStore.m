@@ -76,6 +76,20 @@
 }
 
 /**
+ *  条件查询（通过fetchRequest）
+ *
+ *  @param request 请求条件模型
+ *  @param error   错误信息
+ *
+ *  @return 返回传入NSFetchRequest的NSFetchedResultsController
+ */
+- (NSFetchedResultsController *)fetchedResultControllerForRequest:(NSFetchRequest *)request
+                                                            error:(NSError *)error
+{
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
+/**
  *  查询NSManagedObject（根据objectID）
  *
  *  @param objectID An object ID.

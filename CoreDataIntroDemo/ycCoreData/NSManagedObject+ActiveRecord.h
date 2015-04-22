@@ -51,6 +51,10 @@
                   predicate:(NSString *)predicate
                   arguments:(va_list)argList;
 
++ (NSFetchedResultsController *)fetchedResultsControllerBySortKey:(NSString*)sortKey
+                                                        ascending:(BOOL)ascending
+                                                        predicate:(NSString *)predicate,...;
+
 /**
  *  根据ID删除
  */

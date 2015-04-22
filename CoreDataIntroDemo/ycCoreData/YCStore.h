@@ -46,6 +46,17 @@
                            error:(NSError **)error;
 
 /**
+ *  条件查询（通过fetchRequest）
+ *
+ *  @param request 请求条件模型
+ *  @param error   错误信息
+ *
+ *  @return 返回传入NSFetchRequest的NSFetchedResultsController
+ */
+- (NSFetchedResultsController *)fetchedResultControllerForRequest:(NSFetchRequest *)request
+                                                            error:(NSError *)error;
+
+/**
  *  查询NSManagedObject（根据objectID）
  *
  *  @param objectID An object ID.
