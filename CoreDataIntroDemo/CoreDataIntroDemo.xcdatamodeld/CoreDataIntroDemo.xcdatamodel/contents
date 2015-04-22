@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14A389a" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Child" representedClassName="Child" syncable="YES">
         <attribute name="childID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="entity1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity1" inverseName="child" inverseEntity="Entity1" syncable="YES"/>
     </entity>
     <entity name="Entity1" representedClassName="Entity1" syncable="YES">
-        <attribute name="ycColor" attributeType="Transformable" syncable="YES"/>
+        <attribute name="ycColor" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="ycCreateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ycOrder" optional="YES" attributeType="Integer 64" minValueString="1" maxValueString="1000" defaultValueString="10" syncable="YES"/>
         <attribute name="ycTitle" optional="YES" attributeType="String" defaultValueString="这是默认值" syncable="YES"/>

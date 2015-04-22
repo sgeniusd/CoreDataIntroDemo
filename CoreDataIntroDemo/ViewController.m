@@ -40,9 +40,9 @@
     /**
      *  OSX上默认不为nil，iOS上需要重新初始化
      */
-    [YCStore sharedInstance].managedObjectContext.undoManager = [[NSUndoManager alloc]init];
-    [[[YCStore sharedInstance].managedObjectContext undoManager]registerUndoWithTarget:self selector:@selector(undoCompleted:) object:nil];
-    [[[YCStore sharedInstance].managedObjectContext undoManager]setActionName:@"ManagedObjectContextUndo"];
+//    [YCStore sharedInstance].managedObjectContext.undoManager = [[NSUndoManager alloc]init];
+//    [[[YCStore sharedInstance].managedObjectContext undoManager]registerUndoWithTarget:self selector:@selector(undoCompleted:) object:nil];
+//    [[[YCStore sharedInstance].managedObjectContext undoManager]setActionName:@"ManagedObjectContextUndo"];
     
     //保存按钮
     [self addSaveButtonItem];
@@ -166,7 +166,7 @@
         entity.ycCreateTime = [NSDate date];
         entity.ycColor = [UIColor blueColor];
         entity.ycValues = @[@"10", @"J", @"Q", @"K", @"A"];
-        
+    
 //        [[YCStore sharedInstance].managedObjectContext refreshObject:entity mergeChanges:YES];
 //    }
 //    NSString *logInfo = [[NSString alloc]initWithFormat:@"插入：order = %ld title = %@ createTime = %@ values= %@\n", entity.ycOrder, entity.ycTitle, entity.formateDate, entity.ycValues];

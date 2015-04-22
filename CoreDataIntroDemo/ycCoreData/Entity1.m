@@ -98,9 +98,7 @@ static NSDateFormatter *_dateFormatter = nil;
 - (NSFetchedResultsController *)childrenFetchedResultsController
 {
     NSFetchedResultsController *fetchedResultsController = nil;
-    if (self.parent) {
-        fetchedResultsController = [Entity1 fetchedResultsControllerBySortKey:@"ycOrder" ascending:YES predicate:@"parent = %@",self.parent];
-    }
+    fetchedResultsController = [Entity1 fetchedResultsControllerBySortKey:@"ycOrder" ascending:YES predicate:@"parent = %@",self];
     return fetchedResultsController;
 }
 

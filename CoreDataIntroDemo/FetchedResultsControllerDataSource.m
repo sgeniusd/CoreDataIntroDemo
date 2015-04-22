@@ -39,7 +39,10 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
+    id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.reuseIdentifier];
+    }
     [self.delegate configureCell:cell withObject:object];
     return cell;
 }
@@ -73,11 +76,12 @@
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else if (type == NSFetchedResultsChangeMove) {
         [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
-    } else if (type == NSFetchedResultsChangeDelete) {
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else {
-        NSAssert(NO,@"");
     }
+//    else if (type == NSFetchedResultsChangeDelete) {
+//        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    } else {
+//        NSAssert(NO,@"");
+//    }
 }
 
 - (void)setFetchedResultsController:(NSFetchedResultsController*)fetchedResultsController

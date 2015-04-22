@@ -12,6 +12,7 @@
 #import "Item.h"
 #import "Entity1.h"
 #import "NSManagedObject+ActiveRecord.h"
+#import "YCStore.h"
 
 static NSString* const selectItemSegue = @"selectItem";
 
@@ -24,12 +25,17 @@ static NSString* const selectItemSegue = @"selectItem";
 @end
 
 @implementation FetchedItemController
+{
+    NSInteger _count;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     //    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"FetchedResultsController";
+    
+    _count = 1;
     
     [self setupFetchedResultsController];
     [self setupNewItemField];
@@ -40,7 +46,7 @@ static NSString* const selectItemSegue = @"selectItem";
     [super viewWillAppear:animated];
     
     if ([self.tableView numberOfRowsInSection:0] > 0) {
-        [self hideNewItemField];
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
     self.fetchedResultsControllerDataSource.paused = NO;
 }
@@ -62,6 +68,7 @@ static NSString* const selectItemSegue = @"selectItem";
 - (void)setupNewItemField
 {
     self.titleField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+    self.titleField.backgroundColor = [UIColor greenColor];
     self.titleField.delegate = self;
     self.titleField.placeholder = NSLocalizedString(@"Add a new item", @"Placeholder text for adding a new item");
     self.tableView.tableHeaderView = self.titleField;
@@ -79,8 +86,8 @@ static NSString* const selectItemSegue = @"selectItem";
 - (void)deleteObject:(id)object
 {
     Entity1* item = object;
-    NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"Delete \"%@\"", @"Delete undo action name"), item.ycTitle];
-    [self.undoManager setActionName:actionName];
+//    NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"Delete \"%@\"", @"Delete undo action name"), item.ycTitle];
+//    [self.undoManager setActionName:actionName];
     [item deleteSelf];
 }
 
@@ -104,12 +111,15 @@ static NSString* const selectItemSegue = @"selectItem";
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     NSString* title = textField.text;
-    NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"add item \"%@\"", @"Undo action name of add item"), title];
-    [self.undoManager setActionName:actionName];
+//    NSString* actionName = [NSString stringWithFormat:NSLocalizedString(@"add item \"%@\"", @"Undo action name of add item"), title];
+//    [self.undoManager setActionName:actionName];
     
     Entity1 *entity = [Entity1 insertNewObject];
     entity.ycTitle = title;
+    entity.ycOrder = _count++;
     entity.parent = self.parent;
+    [YCStore saveContext];
+    
 //    [Item insertItemWithTitle:title parent:self.parent inManagedObjectContext:self.managedObjectContext];
     textField.text = @"";
     [textField resignFirstResponder];
@@ -133,15 +143,17 @@ static NSString* const selectItemSegue = @"selectItem";
 
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
+    
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint*)targetContentOffset
+{
     if (-scrollView.contentOffset.y > self.titleField.bounds.size.height) {
         [self showNewItemField];
     } else if (scrollView.contentOffset.y > 0) {
         [self hideNewItemField];
     }
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint*)targetContentOffset
-{
+    
     BOOL itemFieldVisible = self.tableView.contentInset.top == 0;
     if (itemFieldVisible) {
         [self.titleField becomeFirstResponder];
@@ -151,14 +163,14 @@ static NSString* const selectItemSegue = @"selectItem";
 - (void)showNewItemField
 {
     UIEdgeInsets insets = self.tableView.contentInset;
-    insets.top = 0;
+    insets.top = 64;
     self.tableView.contentInset = insets;
 }
 
 - (void)hideNewItemField
 {
     UIEdgeInsets insets = self.tableView.contentInset;
-    insets.top = -self.titleField.bounds.size.height;
+    insets.top = 25;
     self.tableView.contentInset = insets;
 }
 
