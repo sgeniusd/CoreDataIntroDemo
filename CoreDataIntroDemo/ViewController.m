@@ -315,9 +315,7 @@
     NSArray *result = [Entity1 fetchByPredicate:@"ycOrder < 100"];
     if ([result count] > 0) {
         for (Entity1 *entity in result) {
-//            entity.otherchild = [NSSet setWithArray:_toAddChildren];
-            [entity addOtherchild:[NSSet setWithArray:_toAddChildren]];
-            
+            entity.otherchild = [NSSet setWithArray:_toAddChildren];
         }
     }
 }

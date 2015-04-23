@@ -2,7 +2,7 @@
 //  Child.m
 //  CoreDataIntroDemo
 //
-//  Created by bita on 15/4/22.
+//  Created by bita on 15/4/23.
 //  Copyright (c) 2015年 bita. All rights reserved.
 //
 

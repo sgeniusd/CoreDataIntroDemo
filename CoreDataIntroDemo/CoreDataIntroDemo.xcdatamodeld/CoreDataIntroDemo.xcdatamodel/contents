@@ -3,7 +3,7 @@
     <entity name="Child" representedClassName="Child" syncable="YES">
         <attribute name="childID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="entity1" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entity1" inverseName="otherchild" inverseEntity="Entity1" syncable="YES"/>
+        <relationship name="entity1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity1" inverseName="otherchild" inverseEntity="Entity1" syncable="YES"/>
     </entity>
     <entity name="Entity1" representedClassName="Entity1" syncable="YES">
         <attribute name="ycColor" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -12,7 +12,7 @@
         <attribute name="ycTitle" optional="YES" attributeType="String" defaultValueString="这是默认值" syncable="YES"/>
         <attribute name="ycValues" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="child" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entity1" inverseName="parent" inverseEntity="Entity1" syncable="YES"/>
-        <relationship name="otherchild" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="entity1" inverseEntity="Child" syncable="YES"/>
+        <relationship name="otherchild" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="entity1" inverseEntity="Child" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entity1" inverseName="child" inverseEntity="Entity1" syncable="YES"/>
     </entity>
     <elements>
