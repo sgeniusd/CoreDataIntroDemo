@@ -98,7 +98,8 @@
  */
 - (NSManagedObject *)objectWithID:(NSManagedObjectID *)objectID {
     if (objectID != nil) {
-        return [self.managedObjectContext objectWithID:objectID];
+        //existingObjectWithID:error:永远不会返回fault的对象
+        return [self.managedObjectContext existingObjectWithID:objectID error:nil];
     } else {
         return nil;
     }

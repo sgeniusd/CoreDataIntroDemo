@@ -123,7 +123,7 @@ static NSString* const selectItemSegue = @"selectItem";
 //    [Item insertItemWithTitle:title parent:self.parent inManagedObjectContext:self.managedObjectContext];
     textField.text = @"";
     [textField resignFirstResponder];
-    [self hideNewItemField];
+//    [self hideNewItemField];
     return NO;
 }
 
@@ -139,39 +139,6 @@ static NSString* const selectItemSegue = @"selectItem";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)scrollViewDidScroll:(UIScrollView*)scrollView
-{
-    
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint*)targetContentOffset
-{
-    if (-scrollView.contentOffset.y > self.titleField.bounds.size.height) {
-        [self showNewItemField];
-    } else if (scrollView.contentOffset.y > 0) {
-        [self hideNewItemField];
-    }
-    
-    BOOL itemFieldVisible = self.tableView.contentInset.top == 0;
-    if (itemFieldVisible) {
-        [self.titleField becomeFirstResponder];
-    }
-}
-
-- (void)showNewItemField
-{
-    UIEdgeInsets insets = self.tableView.contentInset;
-    insets.top = 64;
-    self.tableView.contentInset = insets;
-}
-
-- (void)hideNewItemField
-{
-    UIEdgeInsets insets = self.tableView.contentInset;
-    insets.top = 25;
-    self.tableView.contentInset = insets;
 }
 
 - (void)setParent:(Entity1*)parent

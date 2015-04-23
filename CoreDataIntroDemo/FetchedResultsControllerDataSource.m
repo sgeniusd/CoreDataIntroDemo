@@ -77,11 +77,11 @@
     } else if (type == NSFetchedResultsChangeMove) {
         [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
     }
-//    else if (type == NSFetchedResultsChangeDelete) {
-//        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    } else {
-//        NSAssert(NO,@"");
-//    }
+    else if (type == NSFetchedResultsChangeDelete) {
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        NSAssert(NO,@"");
+    }
 }
 
 - (void)setFetchedResultsController:(NSFetchedResultsController*)fetchedResultsController

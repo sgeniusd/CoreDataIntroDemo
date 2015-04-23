@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Entity1.h"
+#import "Child.h"
 #import "NSManagedObject+ActiveRecord.h"
 #import "YCStore.h"
 #import "FetchedItemController.h"
@@ -18,6 +19,8 @@
     __weak IBOutlet UITextField *_orderTextField;
     
     __weak IBOutlet UITextView *_outputTextView;
+    
+    NSMutableArray         *_toAddChildren;
 }
 
 @property (nonatomic, copy) NSString *currentLog;
@@ -27,6 +30,8 @@
 - (void)addGlobalNotificationObserver;
 
 - (void)addLogInfo:(NSString *)logInfo;
+
+- (void)insertTestChildren;
 
 @end
 
@@ -48,6 +53,11 @@
     [self addSaveButtonItem];
     
     [self addGlobalNotificationObserver];
+    
+    /**
+     *  添加测试child数据
+     */
+    [self insertTestChildren];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +92,23 @@
         logInfo = [logInfo stringByAppendingString:@"---------------------\n"];
         self.currentLog = [logInfo stringByAppendingString:self.currentLog];
         _outputTextView.text = self.currentLog;
+    }
+}
+
+- (void)insertTestChildren
+{
+    NSArray *resultChildren = [Child fetchBySortKey:@"childID" ascending:YES];
+    if ([resultChildren count] > 0) {
+        _toAddChildren = [resultChildren mutableCopy];
+    } else {
+        _toAddChildren = [[NSMutableArray alloc]initWithCapacity:0];
+        for (int i = 0; i < 5; i++) {
+            Child *child = [Child insertNewObject];
+            child.childID = i+1;
+            child.name = [[NSString alloc]initWithFormat:@"child %d", i+1];
+            [_toAddChildren addObject:child];
+        }
+        [YCStore saveContext];
     }
 }
 
@@ -157,15 +184,23 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
+    Entity1 *entity = [Entity1 insertNewObject];
+    entity.ycTitle = _titleTextField.text;
+    if (entity > 0) {
+        entity.ycOrder = [_orderTextField.text integerValue];
+    }
+    entity.ycCreateTime = [NSDate date];
+    entity.ycColor = [UIColor blueColor];
+    entity.ycValues = @[@"10", @"J", @"Q", @"K", @"A"];
+    
 //    for (int i = 0; i < 100000; i ++) {
-        Entity1 *entity = [Entity1 insertNewObject];
-        entity.ycTitle = _titleTextField.text;
-        if (entity > 0) {
-            entity.ycOrder = [_orderTextField.text integerValue];
-        }
-        entity.ycCreateTime = [NSDate date];
-        entity.ycColor = [UIColor blueColor];
-        entity.ycValues = @[@"10", @"J", @"Q", @"K", @"A"];
+//        entity.ycTitle = _titleTextField.text;
+//        if (entity > 0) {
+//            entity.ycOrder = [_orderTextField.text integerValue];
+//        }
+//        entity.ycCreateTime = [NSDate date];
+//        entity.ycColor = [UIColor blueColor];
+//        entity.ycValues = @[@"10", @"J", @"Q", @"K", @"A"];
     
 //        [[YCStore sharedInstance].managedObjectContext refreshObject:entity mergeChanges:YES];
 //    }
@@ -196,7 +231,19 @@
     if (_orderTextField.text.length == 0) {
         result = [Entity1 fetchBySortKey:@"ycOrder" ascending:NO];
     } else {
+        __weak ViewController *controller = self;
+        __weak UITextField *titleTxtField = _titleTextField;
         result = [Entity1 fetchByPredicate:@"ycOrder==%ld", [_orderTextField.text integerValue]];
+        if ([result count] > 0) {
+            Entity1 *entity = result[0];
+            titleTxtField.text = entity.ycTitle;
+            if (entity.ycColor) {
+                titleTxtField.textColor = entity.ycColor;
+            }
+        } else {
+            [controller addLogInfo:@"查询无结果\n"];
+        }
+//        result = [Entity1 fetchByPredicate:@"ycOrder==%ld", [_orderTextField.text integerValue]];
     }
     if ([result count] > 0) {
         Entity1 *entity = result[0];
@@ -261,5 +308,25 @@
     [self.navigationController pushViewController:itemController animated:YES];
 }
 
+/**
+ *  添加child relationship
+ */
+- (IBAction)addChildren:(id)sender {
+    NSArray *result = [Entity1 fetchByPredicate:@"ycOrder < 100"];
+    if ([result count] > 0) {
+        for (Entity1 *entity in result) {
+//            entity.otherchild = [NSSet setWithArray:_toAddChildren];
+            [entity addOtherchild:[NSSet setWithArray:_toAddChildren]];
+            
+        }
+    }
+}
+
+/**
+ *  移除child relationship
+ */
+- (IBAction)removeChildren:(id)sender {
+    
+}
 
 @end

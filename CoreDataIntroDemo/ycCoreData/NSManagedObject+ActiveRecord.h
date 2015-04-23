@@ -25,10 +25,21 @@
  */
 + (instancetype)insertNewObject;
 
+///**
+// *  异步插入
+// */
+//+ (void)insertNewObjectAsyn:(void(^)(NSManagedObject *object))insertFinishBlock;
+
 /**
  *  根据谓词查询
  */
 + (NSArray *)fetchByPredicate:(NSString *)predicate,...;
+
+///**
+// *  异步查询
+// */
+//+ (void)fetchAsyn:(void(^)(NSArray *resultObjects))fetchedFinishBlock
+//      byPredicate:(NSString *)predicate,...;
 
 /**
  *  查询所有数据并排序

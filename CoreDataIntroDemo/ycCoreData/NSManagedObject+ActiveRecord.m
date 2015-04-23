@@ -28,6 +28,18 @@
     return (id)[[YCStore sharedInstance]insertNewObjectForEntityName:[self entityName]];
 }
 
+///**
+// *  异步插入
+// */
+//+ (void)insertNewObjectAsyn:(void(^)(NSManagedObject *object))insertFinishBlock
+//{
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        __weak NSManagedObject *insertObject = [[YCStore sharedInstance]insertNewObjectForEntityName:[self entityName]];
+//        insertFinishBlock(insertObject);
+//        [YCStore saveContext];
+//    });
+//}
+
 #pragma mark - 查询
 
 + (NSFetchRequest *)defaultFetchRequest
@@ -50,6 +62,24 @@
     return [[YCStore sharedInstance] executeFetchRequest:request error:nil];
 }
 
+//+ (void)fetchAsyn:(void(^)(NSArray *resultObjects))fetchFinishBlock
+//      byPredicate:(NSString *)predicate,...
+//{
+//    NSFetchRequest* request = [self defaultFetchRequest];
+//    if (predicate.length > 0) {
+//        va_list args;
+//        va_start(args, predicate);
+//        request.predicate = [NSPredicate predicateWithFormat:predicate arguments:args];
+//        va_end(args);
+//    }
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSArray *resultObjects = [[YCStore sharedInstance] executeFetchRequest:request error:nil];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            fetchFinishBlock(resultObjects);
+//        });
+//    });
+//}
+//
 /**
  *  查询所有数据并排序
  */
