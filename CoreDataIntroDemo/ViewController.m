@@ -324,7 +324,12 @@
  *  移除child relationship
  */
 - (IBAction)removeChildren:(id)sender {
-    
+    NSArray *result = [Entity1 fetchByPredicate:@"ycOrder < 100"];
+    if ([result count] > 0) {
+        for (Entity1 *entity in result) {
+            entity.otherchild = nil;
+        }
+    }
 }
 
 @end

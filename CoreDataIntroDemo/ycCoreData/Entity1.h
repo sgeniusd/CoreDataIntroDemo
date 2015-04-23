@@ -35,7 +35,4 @@
  */
 + (Entity1 *)rootItem;
 
-- (void)addOtherchild:(NSSet *)objects;
-- (void)removeOtherchild:(NSSet *)objects;
-
 @end
