@@ -127,6 +127,8 @@
 				4C42E1BC1AE0ADD9003F3C6D /* AppDelegate.m */,
 				4C42E1C11AE0ADD9003F3C6D /* ViewController.h */,
 				4C42E1C21AE0ADD9003F3C6D /* ViewController.m */,
+				4C42E1E11AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.h */,
+				4C42E1E21AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m */,
 				4C8824511AE7A7F900095318 /* FetchedItemController.h */,
 				4C8824521AE7A7F900095318 /* FetchedItemController.m */,
 				4C8824531AE7A7F900095318 /* FetchedItemController.xib */,
@@ -171,8 +173,6 @@
 		4C42E1E01AE0DF3A003F3C6D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				4C42E1E11AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.h */,
-				4C42E1E21AE0DF4F003F3C6D /* FetchedResultsControllerDataSource.m */,
 				4C42E1E31AE0DF4F003F3C6D /* PersistentStack.h */,
 				4C42E1E41AE0DF4F003F3C6D /* PersistentStack.m */,
 				4C42E1E51AE0DF4F003F3C6D /* Store.h */,

@@ -33,7 +33,7 @@ static NSString* const selectItemSegue = @"selectItem";
 {
     [super viewDidLoad];
     //    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"FetchedResultsController";
+    self.title = self.parent.ycTitle;
     
     _count = 1;
     
@@ -136,9 +136,12 @@ static NSString* const selectItemSegue = @"selectItem";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    FetchedItemController *controller = [[FetchedItemController alloc]init];
+    controller.parent = self.fetchedResultsControllerDataSource.selectedItem;
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)setParent:(Entity1*)parent
