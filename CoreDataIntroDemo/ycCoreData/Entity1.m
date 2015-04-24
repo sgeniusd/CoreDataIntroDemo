@@ -25,6 +25,7 @@ static NSDateFormatter *_dateFormatter = nil;
 @dynamic ycValues;
 @dynamic ycExtra;
 @dynamic parent;
+@dynamic child;
 @dynamic otherchild;
 
 @synthesize formateDate = _formateDate;

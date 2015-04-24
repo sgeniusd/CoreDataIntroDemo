@@ -8,8 +8,6 @@
 
 #import "FetchedItemController.h"
 #import "FetchedResultsControllerDataSource.h"
-#import "Store.h"
-#import "Item.h"
 #import "Entity1.h"
 #import "NSManagedObject+ActiveRecord.h"
 #import "YCStore.h"
