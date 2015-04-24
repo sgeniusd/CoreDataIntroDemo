@@ -35,8 +35,9 @@
 //{
 //    dispatch_async(dispatch_get_global_queue(0, 0), ^{
 //        __weak NSManagedObject *insertObject = [[YCStore sharedInstance]insertNewObjectForEntityName:[self entityName]];
-//        insertFinishBlock(insertObject);
 //        [YCStore saveContext];
+//        
+//        insertFinishBlock(insertObject);
 //    });
 //}
 

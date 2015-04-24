@@ -10,11 +10,18 @@
 
 @interface YCStore ()
 
+@property (readonly, strong, nonatomic) NSManagedObjectContext *masterContext;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *mainContext;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *workerContext;
+
 @end
 
 @implementation YCStore
 
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize masterContext = _masterContext;
+@synthesize mainContext = _mainContext;
+@synthesize workerContext = _workerContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
@@ -191,6 +198,42 @@
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
+}
+
+- (NSManagedObjectContext *)masterContext
+{
+    if (_masterContext == nil) {
+        _masterContext = [self managedObjectContextWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    }
+    return _masterContext;
+}
+
+- (NSManagedObjectContext *)mainContext
+{
+    if (_mainContext == nil) {
+        _mainContext = [self managedObjectContextWithConcurrencyType:NSMainQueueConcurrencyType];
+        _mainContext.parentContext = self.masterContext;
+    }
+    return _mainContext;
+}
+
+- (NSManagedObjectContext *)workerContext
+{
+    if (_workerContext == nil) {
+        _workerContext = [self managedObjectContextWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    }
+    return _workerContext;
+}
+
+- (NSManagedObjectContext *)managedObjectContextWithConcurrencyType:(NSManagedObjectContextConcurrencyType)concurrencyType
+{
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (!coordinator) {
+        return nil;
+    }
+    NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:concurrencyType];
+    [managedObjectContext setPersistentStoreCoordinator:coordinator];
+    return managedObjectContext;
 }
 
 @end
