@@ -45,9 +45,9 @@
     /**
      *  OSX上默认不为nil，iOS上需要重新初始化
      */
-//    [YCStore sharedInstance].managedObjectContext.undoManager = [[NSUndoManager alloc]init];
-//    [[[YCStore sharedInstance].managedObjectContext undoManager]registerUndoWithTarget:self selector:@selector(undoCompleted:) object:nil];
-//    [[[YCStore sharedInstance].managedObjectContext undoManager]setActionName:@"ManagedObjectContextUndo"];
+    [YCStore sharedInstance].managedObjectContext.undoManager = [[NSUndoManager alloc]init];
+    [[[YCStore sharedInstance].managedObjectContext undoManager]registerUndoWithTarget:self selector:@selector(undoCompleted:) object:nil];
+    [[[YCStore sharedInstance].managedObjectContext undoManager]setActionName:@"ManagedObjectContextUndo"];
     
     //保存按钮
     [self addSaveButtonItem];
@@ -214,7 +214,7 @@
 - (IBAction)deleteClicked:(id)sender {
     if (_orderTextField.text.length == 0) {
         //delete today
-        [Entity1 deleteObjectByPredicate:@"ycColor = %@", [UIColor blueColor]];
+        [Entity1 deleteObjectByPredicate:@"ycColor = %@", @"blue"];
     } else {
         [Entity1 deleteObjectByPredicate:@"ycOrder = %ld", [_orderTextField.text integerValue]];
     }
@@ -249,7 +249,7 @@
         Entity1 *entity = result[0];
         _titleTextField.text = entity.ycTitle;
         if (entity.ycColor) {
-            _titleTextField.textColor = entity.ycColor;
+//            _titleTextField.textColor = entity.ycColor;
         }
     } else {
         [self addLogInfo:@"查询无结果\n"];
@@ -269,7 +269,7 @@
 //    }
     
     //验证缓存机制
-//    [self queryAgain];
+    [self queryAgain];
 }
 
 - (void)queryAgain

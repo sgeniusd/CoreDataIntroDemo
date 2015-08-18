@@ -65,7 +65,6 @@
 		4C8824511AE7A7F900095318 /* FetchedItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedItemController.h; sourceTree = "<group>"; };
 		4C8824521AE7A7F900095318 /* FetchedItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedItemController.m; sourceTree = "<group>"; };
 		4C8824531AE7A7F900095318 /* FetchedItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FetchedItemController.xib; sourceTree = "<group>"; };
-		4CFFA0BC1AE63AEF0000B8C6 /* CoreDataIntroDemo1_1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataIntroDemo1_1.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,7 +501,6 @@
 		4C42E1BE1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4CFFA0BC1AE63AEF0000B8C6 /* CoreDataIntroDemo1_1.xcdatamodel */,
 				4C42E1BF1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodel */,
 			);
 			currentVersion = 4C42E1BF1AE0ADD9003F3C6D /* CoreDataIntroDemo.xcdatamodel */;

@@ -116,7 +116,6 @@ static NSString* const selectItemSegue = @"selectItem";
     entity.ycTitle = title;
     entity.ycOrder = _count++;
     entity.parent = self.parent;
-    [YCStore saveContext];
     
 //    [Item insertItemWithTitle:title parent:self.parent inManagedObjectContext:self.managedObjectContext];
     textField.text = @"";
